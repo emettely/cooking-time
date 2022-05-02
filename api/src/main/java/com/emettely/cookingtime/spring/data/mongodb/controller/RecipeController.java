@@ -17,7 +17,7 @@ import java.util.Optional;
 //– @RestController annotation is used to define a controller and to indicate that the return value of the methods should be be bound to the web response body.
 //– @RequestMapping("/api") declares that all Apis’ url in the controller will start with /api.
 //– We use @Autowired to inject RecipeRepository bean to local variable.
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class RecipeController {
