@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e702862-4d5b-4435-9636-f7d245b8301c" name="Changes" comment="" />
+    <list default="true" id="4e702862-4d5b-4435-9636-f7d245b8301c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/http/APOD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/http/JsonBodyHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/CookRecipes.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/Dropdown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/NavBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/Pagination.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/types/DropDownItem.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/types/Request.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/types/Url.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/CookingTimeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/CookingTimeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/model/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/model/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/repository/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/emettely/cookingtime/spring/data/mongodb/repository/RecipeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/AddRecipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/AddRecipe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Recipe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/RecipesList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/RecipesList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/SearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/TopMenu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/services/RecipeService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/services/RecipeService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/types/Recipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/types/Recipe.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
         <option value="Class" />
       </list>
     </option>
@@ -37,22 +65,97 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ui/src/types" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15345268" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/ui/node_modules/typescript/lib" />
   </component>
-  <component name="RunManager">
-    <configuration name="CookingTimeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="cooking-time" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.emettely.cookingtime.CookingTimeApplication" />
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="true" />
+        <entry key="com.haulmont.rcb.reactInspector" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ui/src/types" />
+      <recent name="$PROJECT_DIR$/ui/src/services" />
+      <recent name="$PROJECT_DIR$/ui/src/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="java.com.emettely.cookingtime.spring.data.mongodb.repository" />
+      <recent name="java.com.emettely.cookingtime.spring.data.mongodb.model" />
+      <recent name="java.com.emettely.cookingtime.spring.data.mongodb.controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Remote JVM Debug.Remote">
+    <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Remote" type="Remote">
+      <module name="cooking-time" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="5005" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CookingTimeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cooking-time" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="java.cookingtime.CookingTimeApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Remote JVM Debug.Remote" />
+      <item itemvalue="Spring Boot.CookingTimeApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -63,11 +166,61 @@
       <option name="presentableId" value="Default" />
       <updated>1651308018822</updated>
       <workItem from="1651308020194" duration="3092000" />
-      <workItem from="1651351795208" duration="4305000" />
+      <workItem from="1651351795208" duration="5740000" />
+      <workItem from="1651424861096" duration="22509000" />
+      <workItem from="1651664794331" duration="7772000" />
+      <workItem from="1651693996095" duration="75000" />
+      <workItem from="1651694084510" duration="5285000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/api/src/main/com/emettely/cookingtime/spring/data/mongodb/controller/RecipeController.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -10,14 +10,16 @@ public class Recipe {
     private String title;
     private String description;
     private boolean published;
+    private String url;
 
     public Recipe() {
     }
 
-    public Recipe(String title, String description, boolean published) {
+    public Recipe(String title, String description, boolean published, String url) {
         this.title = title;
         this.description = description;
         this.published = published;
+        this.url = url;
     }
 
     public String getId() {
@@ -48,8 +50,16 @@ public class Recipe {
         this.published = isPublished;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
-        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
+        return "Recipe [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + ",url=" + url + "]";
     }
 }

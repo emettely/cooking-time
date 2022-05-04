@@ -2,7 +2,7 @@ import http from '../http-common'
 import IRecipeData from "../types/Recipe";
 
 const getAll = (params: any) => {
-    return http.get<any>("/recipes", params)
+    return http.get<any>("/recipes", {params: params})
 }
 
 const get = (id: any) => {
