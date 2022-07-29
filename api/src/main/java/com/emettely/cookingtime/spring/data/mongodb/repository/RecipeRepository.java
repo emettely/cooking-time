@@ -19,4 +19,6 @@ public interface RecipeRepository extends MongoRepository<Recipe, String> {
     Page<Recipe> findByTitleContainingIgnoreCase(String title, Pageable paging);
 
     Page<Recipe> findByUrlStartsWith(String url, Pageable paging);
+
+    Recipe findByUrl(String url);
 }

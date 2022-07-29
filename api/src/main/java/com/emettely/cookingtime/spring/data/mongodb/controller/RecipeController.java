@@ -1,5 +1,7 @@
 package com.emettely.cookingtime.spring.data.mongodb.controller;
 
+import com.emettely.cookingtime.pojo.RecipeDTO;
+import com.emettely.cookingtime.service.RecipeService;
 import com.emettely.cookingtime.spring.data.mongodb.model.Recipe;
 import com.emettely.cookingtime.spring.data.mongodb.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.emettely.cookingtime.http.APOD;
-import com.emettely.cookingtime.http.JsonBodyHandler;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.*;
-import java.util.function.Supplier;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 // – @CrossOrigin is for configuring allowed origins.
 //– @RestController annotation is used to define a controller and to indicate that the return value of the methods should be be bound to the web response body.
@@ -31,6 +28,9 @@ public class RecipeController {
     @Autowired
     RecipeRepository recipeRepository;
 
+    @Autowired
+    RecipeService recipeService;
+
     @GetMapping("/recipes")
     public ResponseEntity<Map<String, Object>> getAllRecipes(
             @RequestParam(required = false) String title,
@@ -38,34 +38,28 @@ public class RecipeController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "3") int size
     ) {
-        List<Recipe> recipes;
+        List<RecipeDTO> recipes;
 
         try {
-            Pageable paging = PageRequest.of(page, size);
-            Page<Recipe> recipePage;
-            if (title != null) {
-                recipePage = recipeRepository.findByTitleContainingIgnoreCase(title, paging);
-            } else if (url != null) {
-                recipePage = recipeRepository.findByUrlStartsWith(url, paging);
-            } else {
-                recipePage = recipeRepository.findAll(paging);
-            }
-
+            Page<RecipeDTO> recipePage = recipeService.getRecipePage(title, url, page, size);
             recipes = recipePage.getContent();
-
             if (recipes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-            Map<String, Object> response = new HashMap<>();
-            response.put("recipes", recipes);
-            response.put("currentPage", recipePage.getNumber());
-            response.put("totalItems", recipePage.getTotalElements());
-            response.put("totalPages", recipePage.getTotalPages());
-
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+            return mapRecipesToResponseEntity(recipes, recipePage);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    private ResponseEntity<Map<String, Object>> mapRecipesToResponseEntity(List<RecipeDTO> recipes, Page<RecipeDTO> recipePage) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("recipes", recipes);
+        response.put("currentPage", recipePage.getNumber());
+        response.put("totalItems", recipePage.getTotalElements());
+        response.put("totalPages", recipePage.getTotalPages());
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/recipes/{id}")
@@ -77,22 +71,9 @@ public class RecipeController {
     }
 
     @PostMapping("/recipes")
-    public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
+    public ResponseEntity<Recipe> createRecipe(@RequestBody RecipeDTO recipe) {
         try {
-            String url = recipe.getUrl();
-
-            Recipe _recipe = recipeRepository.save(
-                    new Recipe(recipe.getTitle(), recipe.getDescription(), false, url)
-            );
-
-            if (url != null) {
-                HttpClient client = HttpClient.newHttpClient();
-                URI uri = URI.create(url);
-                HttpRequest request = HttpRequest.newBuilder(uri).header("accept", "application/json").build();
-                HttpResponse<Supplier<APOD>> response = client.send(request, new JsonBodyHandler<>(APOD.class));
-                System.out.println(response.body().get());
-            }
-
+            Recipe _recipe = recipeService.createRecipe(recipe);
             return new ResponseEntity<>(_recipe, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -101,14 +82,10 @@ public class RecipeController {
     }
 
     @PutMapping("/recipes/{id}")
-    public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") String id, @RequestBody Recipe recipe) {
-        Optional<Recipe> optionalRecipe = recipeRepository.findById(id);
-        if (optionalRecipe.isPresent()) {
-            Recipe _recipe = optionalRecipe.get();
-            _recipe.setTitle(recipe.getTitle());
-            _recipe.setDescription(recipe.getDescription());
-            _recipe.setPublished(recipe.isPublished());
-            return new ResponseEntity<>(recipeRepository.save(_recipe), HttpStatus.OK);
+    public ResponseEntity<Recipe> updateRecipe(@PathVariable("id") String id, @RequestBody RecipeDTO recipe) {
+        Recipe result = recipeService.updateRecipe(id, recipe);
+        if (result != null) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -140,22 +117,35 @@ public class RecipeController {
             @RequestParam(defaultValue = "3") int size
     ) {
         try {
-            Pageable paging = PageRequest.of(page, size);
-            Page<Recipe> recipePage = recipeRepository.findByPublished(true, paging);
-            List<Recipe> recipes = recipePage.getContent();
+            Page<RecipeDTO> recipePage = recipeService.findByPublished(true, page, size);
+            List<RecipeDTO> recipes = recipePage.getContent();
             if (recipes.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             } else {
-                Map<String, Object> response = new HashMap<>();
-                response.put("recipes", recipes);
-                response.put("currentPage", recipePage.getNumber());
-                response.put("totalItems", recipePage.getTotalElements());
-                response.put("totalPages", recipePage.getTotalPages());
-
-                return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+                return mapRecipesToResponseEntity(recipes, recipePage);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/web-recipe")
+    public ResponseEntity<Recipe> webRecipe(@RequestBody String url) {
+        Recipe _recipe;
+        url = url.trim();
+        try {
+            if (url.isBlank()) {
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            } else {
+                _recipe = recipeRepository.findByUrl(url);
+                if (_recipe != null) {
+                    return new ResponseEntity<>(_recipe, HttpStatus.NOT_MODIFIED);
+                }
+
+            }
+            return new ResponseEntity<>(_recipe, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
