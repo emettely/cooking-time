@@ -70,6 +70,13 @@
             <artifactId>opennlp-tools</artifactId>
             <version>2.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.schemaorg</groupId>
+            <artifactId>schema-org-client</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../../schemaorg-java/build/libs/schema-org-client-1.0.0.jar</systemPath>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
